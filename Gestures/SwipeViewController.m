@@ -54,7 +54,7 @@
             sender.view.center = CGPointMake(sender.view.center.x +100, sender.view.center.y);
             break;
         case UISwipeGestureRecognizerDirectionLeft:
-            sender.view.center = CGPointMake(sender.view.center.x -100, sender.view.center.y);
+            sender.view.center = CGPointMake(sender.view.center.x -1, sender.view.center.y);
             break;
         case UISwipeGestureRecognizerDirectionUp:
             nil;
