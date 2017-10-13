@@ -10,7 +10,7 @@
 
 @interface SwipeViewController ()
 
-@property (nonatomic) BOOL 
+@property (nonatomic) BOOL x;
 
 @end
 
@@ -35,14 +35,34 @@
     over.backgroundColor = [UIColor whiteColor];
     [under addSubview:over];
     
-    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(viewSwiped:)];
-    
-    [over addGestureRecognizer:swipeGesture];
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(viewSwiped:)];
+    [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [over addGestureRecognizer:swipeLeft];
+
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(viewSwiped:)];
+    [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+    [over addGestureRecognizer:swipeRight];
+
+
 }
 
 -(void) viewSwiped: (UISwipeGestureRecognizer *)sender
 {
     
+    switch (sender.direction){
+        case UISwipeGestureRecognizerDirectionRight:
+            sender.view.center = CGPointMake(sender.view.center.x +100, sender.view.center.y);
+            break;
+        case UISwipeGestureRecognizerDirectionLeft:
+            sender.view.center = CGPointMake(sender.view.center.x -100, sender.view.center.y);
+            break;
+        case UISwipeGestureRecognizerDirectionUp:
+            nil;
+            break;
+        case UISwipeGestureRecognizerDirectionDown:
+            nil;
+            break;
+    }
     
     
     
